@@ -9,6 +9,8 @@ var creatures = [
 		"intelligence":10,
 		"wisdom":12,
 		"charisma":15,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -32,6 +34,8 @@ var creatures = [
 		"intelligence":12,
 		"wisdom":10,
 		"charisma":14,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -55,6 +59,8 @@ var creatures = [
 		"intelligence":10,
 		"wisdom":8,
 		"charisma":8,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -78,6 +84,8 @@ var creatures = [
 		"intelligence":8,
 		"wisdom":7,
 		"charisma":8,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -101,6 +109,8 @@ var creatures = [
 		"intelligence":7,
 		"wisdom":11,
 		"charisma":10,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -124,6 +134,8 @@ var creatures = [
 		"intelligence":10,
 		"wisdom":10,
 		"charisma":9,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -147,6 +159,8 @@ var creatures = [
 		"intelligence":10,
 		"wisdom":10,
 		"charisma":10,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -170,6 +184,8 @@ var creatures = [
 		"intelligence":14,
 		"wisdom":11,
 		"charisma":14,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -201,6 +217,8 @@ var creatures = [
 		"intelligence":9,
 		"wisdom":11,
 		"charisma":9,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -224,6 +242,8 @@ var creatures = [
 		"intelligence":11,
 		"wisdom":11,
 		"charisma":15,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -247,6 +267,8 @@ var creatures = [
 		"intelligence":11,
 		"wisdom":13,
 		"charisma":11,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -270,6 +292,8 @@ var creatures = [
 		"intelligence":10,
 		"wisdom":11,
 		"charisma":10,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -301,6 +325,8 @@ var creatures = [
 		"intelligence":5,
 		"wisdom":7,
 		"charisma":7,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -324,6 +350,8 @@ var creatures = [
 		"intelligence":7,
 		"wisdom":9,
 		"charisma":10,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -347,6 +375,8 @@ var creatures = [
 		"intelligence":2,
 		"wisdom":13,
 		"charisma":8,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -378,6 +408,8 @@ var creatures = [
 		"intelligence":5,
 		"wisdom":9,
 		"charisma":6,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -401,6 +433,8 @@ var creatures = [
 		"intelligence":13,
 		"wisdom":18,
 		"charisma":13,
+		"damage_resistances":[],
+		"damage_immunities":[],
 		"actions":{
 			"attack":[
 				{
@@ -422,7 +456,64 @@ var creatures = [
 			]
 		}
 	},
-]
+	{
+		"name":"Test Barbarian",
+		"armor_class":18,
+		"hit_points":85,
+		"strength":11,
+		"dexterity":20,
+		"constitution":15,
+		"intelligence":13,
+		"wisdom":18,
+		"charisma":13,
+		"damage_resistances":["acid","bludgeoning","cold","fire","force","lightning","necrotic","piercing","poison","radiant","slashing","thunder"],
+		"damage_immunities":[],
+		"actions":{
+			"attack":[
+				{
+					"number":2,
+					"name":"greatsword",
+					"attack_bonus":12,
+					"damage_dice":"2d6",
+					"damage_bonus":11,
+					"damage_type":"slashing",
+					"great_weapon_fighting":true,
+					"crit_range":20
+				}
+			]
+		}
+	},
+	{
+		"name":"Test Fighter",
+		"armor_class":19,
+		"hit_points":114,
+		"strength":11,
+		"dexterity":20,
+		"constitution":15,
+		"intelligence":13,
+		"wisdom":18,
+		"charisma":13,
+		"damage_resistances":[],
+		"damage_immunities":[],
+		"actions":{
+			"attack":[
+				{
+					"number":3,
+					"name":"longsword",
+					"attack_bonus":9,
+					"damage_dice":"4d6",
+					"damage_bonus":5,
+					"damage_type":"slashing",
+					"crit_range":19
+				}
+			]
+		}
+	},
+];
+
+Array.prototype.contains = function(element){
+    return this.indexOf(element) > -1;
+};
 
 // generate a random number between low and high
 function generateRandom(low, high) {
@@ -438,7 +529,11 @@ function calculateModifier(attr) {
 function generateSumRandom(n, low, high) {
 	var sum = 0;
 	for (var i = 0; i < n; i++) {
-		sum += generateRandom(low, high);
+		var temp = generateRandom(low, high);
+		// if (high == 6 && (temp == 1 || temp == 2)) {
+		// 	temp = generateRandom(low, high);
+		// }
+		sum += temp;
 	}
 	return sum;
 }
@@ -449,7 +544,7 @@ function generateSumRandom(n, low, high) {
 //		damageValue(creatures[one].Action.Attack[0].Damage, false)
 // TODO:
 // 		
-function damageValue(dmg_dice, dmg_bonus, crit) {
+function damageValue(dmg_dice, dmg_bonus, crit, gwf) {
 	var splitD = dmg_dice.split("d");
 	
 	var numDie = parseInt(splitD[0]);
@@ -457,7 +552,18 @@ function damageValue(dmg_dice, dmg_bonus, crit) {
 
 	var critical = (crit) ? 2 : 1;
 
-	return (critical * generateSumRandom(numDie, 1, dieValue)) + dmg_bonus;
+	var dieRoll = 0;
+	for (var i = 0; i < numDie; i++) {
+		var temp = generateRandom(1, dieValue);
+		if (gwf && (temp == 1 || temp == 2)) {
+			temp = generateRandom(1, dieValue);
+		}
+		dieRoll += temp;
+	}
+
+	// generateSumRandom(numDie, 1, dieValue);
+
+	return (critical * dieRoll) + dmg_bonus;
 
 }
 
@@ -522,10 +628,24 @@ function fight() {
 
 					// compare against opponent AC
 					if (atk > creatures[second].armor_class) {
-						if(creatures[first].actions.attack[a].name == "quarterstaff" && roll == 19) {
+						if(creatures[first].actions.attack[a].crit_range <= roll) {
 							roll = 20;
+							firstCrit++;
 						}
-						var damage = damageValue(creatures[first].actions.attack[a].damage_dice, creatures[first].actions.attack[a].damage_bonus, roll == 20); 
+
+						var gwf = false;
+						if (creatures[first].actions.attack[a].hasOwnProperty('great_weapon_fighting')) {
+							gwf = true;
+						}
+
+						var damage = damageValue(creatures[first].actions.attack[a].damage_dice, creatures[first].actions.attack[a].damage_bonus, roll == 20, gwf); 
+
+						if (creatures[second].damage_immunities.contains(creatures[first].actions.attack[a].damage_type)) {
+							damage = 0;
+						} else if (creatures[second].damage_resistances.contains(creatures[first].actions.attack[a].damage_type)) {
+							damage = Math.ceil(damage / 2);
+						}
+
 						hpSecond -= damage;
 						
 						// $(".log").append("<p>" + creatures[first].name + "1 made a(n) " + creatures[first].actions.attack[0].name + " attack against " + creatures[second].name + "2</p>");
@@ -567,10 +687,24 @@ function fight() {
 
 						// compare against opponent AC
 						if (atk > creatures[first].armor_class) {
-							if(creatures[second].actions.attack[a].name == "quarterstaff" && roll == 19) {
+							if(creatures[second].actions.attack[a].crit_range <= roll) {
 								roll = 20;
+								secondCrit++;
 							}
-							var damage = damageValue(creatures[second].actions.attack[a].damage_dice, creatures[second].actions.attack[a].damage_bonus, roll == 20); 
+
+							var gwf = false;
+							if (creatures[second].actions.attack[a].hasOwnProperty('great_weapon_fighting')) {
+								gwf = true;
+							}
+
+							var damage = damageValue(creatures[second].actions.attack[a].damage_dice, creatures[second].actions.attack[a].damage_bonus, roll == 20, creatures[second].actions.attack[a].great_weapon_fighting); 
+
+							if (creatures[first].damage_immunities.contains(creatures[second].actions.attack[a].damage_type)) {
+								damage = 0;
+							} else if (creatures[first].damage_resistances.contains(creatures[second].actions.attack[a].damage_type)) {
+								damage = Math.ceil(damage / 2);
+							}
+
 							hpFirst -= damage;
 							
 							// $(".log").append("<p>" + creatures[second].name + "2 made a(n) " + creatures[second].actions.attack[0].name + " attack against " + creatures[first].name + "1.</p>");
@@ -632,7 +766,7 @@ $(".fight").click(function() {
 	$(".log").empty();
 	console.log("combat");
 
-	var cases = 100;
+	var cases = 1000;
 
 	for (var i = 0; i < cases; i++) {
 		fight();
