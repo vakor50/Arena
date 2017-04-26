@@ -19,9 +19,7 @@ body {
 body > .container {
   padding: 60px 15px 0;
 }
-.container .text-muted {
-  margin: 20px 0;
-}
+
 
 .footer > .container {
   /*padding-right: 15px;*/
@@ -29,25 +27,3 @@ body > .container {
   padding: 1%;
 }
 
-.option1 {
-	left: 0;
-}
-
-.option2 {
-	right: 300px;
-}
-
-
-
-
-.story-open {
-	text-align: center;
-}
-
-.story-open {
-	margin-top: 20%;
-}
-
-.btn.start {
-	margin-top: 5%;
-}
