@@ -21,3 +21,6 @@ Built using JavaScript and jQuery, with data being pulled from a JSON object.
 - incorporate saving rolls (game mechanic)
 - incorporate more monsters
   - https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json
+  
+  
+Time spent: ~4 hours
