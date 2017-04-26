@@ -1,23 +1,23 @@
 var creatures = [
 	{
 		"name":"Gladiator",
-		"armor_class":17,
-		"hit_points":100,
+		"armor_class":16,
+		"hit_points":165,
 		"strength":18,
-		"dexterity":16,
+		"dexterity":15,
 		"constitution":16,
-		"intelligence":12,
-		"wisdom":10,
-		"charisma":14,
+		"intelligence":10,
+		"wisdom":12,
+		"charisma":15,
 		"actions":{
 			"attack":[
 				{
-					"number":2,
-					"name":"sword",
+					"number":3,
+					"name":"spear",
 					"attack_bonus":7,
-					"damage_dice":"2d6",
+					"damage_dice":"3d8",
 					"damage_bonus":4,
-					"damage_type":"slashing"
+					"damage_type":"piercing"
 				}
 			]
 		}
@@ -191,6 +191,237 @@ var creatures = [
 			]
 		}
 	},
+	{
+		"name":"Berserker",
+		"armor_class":13,
+		"hit_points":99,
+		"strength":16,
+		"dexterity":12,
+		"constitution":17,
+		"intelligence":9,
+		"wisdom":11,
+		"charisma":9,
+		"actions":{
+			"attack":[
+				{
+					"number":1,
+					"name":"greataxe",
+					"attack_bonus":5,
+					"damage_dice":"1d12",
+					"damage_bonus":3,
+					"damage_type":"slashing"
+				}
+			]
+		}
+	},
+	{
+		"name":"Knight",
+		"armor_class":18,
+		"hit_points":80,
+		"strength":16,
+		"dexterity":11,
+		"constitution":14,
+		"intelligence":11,
+		"wisdom":11,
+		"charisma":15,
+		"actions":{
+			"attack":[
+				{
+					"number":2,
+					"name":"greatsword",
+					"attack_bonus":5,
+					"damage_dice":"2d6",
+					"damage_bonus":3,
+					"damage_type":"slashing"
+				}
+			]
+		}
+	},
+	{
+		"name":"Scout",
+		"armor_class":13,
+		"hit_points":27,
+		"strength":11,
+		"dexterity":14,
+		"constitution":12,
+		"intelligence":11,
+		"wisdom":13,
+		"charisma":11,
+		"actions":{
+			"attack":[
+				{
+					"number":2,
+					"name":"longbow",
+					"attack_bonus":4,
+					"damage_dice":"1d8",
+					"damage_bonus":2,
+					"damage_type":"piercing"
+				}
+			]
+		}
+	},
+	{
+		"name":"Veteran",
+		"armor_class":17,
+		"hit_points":90,
+		"strength":16,
+		"dexterity":13,
+		"constitution":14,
+		"intelligence":10,
+		"wisdom":11,
+		"charisma":10,
+		"actions":{
+			"attack":[
+				{
+					"number":2,
+					"name":"longbow",
+					"attack_bonus":5,
+					"damage_dice":"1d8",
+					"damage_bonus":3,
+					"damage_type":"slashing"
+				},
+				{
+					"number":1,
+					"name":"shortsword",
+					"attack_bonus":5,
+					"damage_dice":"1d6",
+					"damage_bonus":3,
+					"damage_type":"slashing"
+				}
+			]
+		}
+	},
+	{
+		"name":"Ogre",
+		"armor_class":11,
+		"hit_points":91,
+		"strength":19,
+		"dexterity":8,
+		"constitution":16,
+		"intelligence":5,
+		"wisdom":7,
+		"charisma":7,
+		"actions":{
+			"attack":[
+				{
+					"number":1,
+					"name":"greatclub",
+					"attack_bonus":6,
+					"damage_dice":"2d8",
+					"damage_bonus":4,
+					"damage_type":"budgeoning"
+				}
+			]
+		}
+	},
+	{
+		"name":"Half-Ogre",
+		"armor_class":12,
+		"hit_points":48,
+		"strength":17,
+		"dexterity":10,
+		"constitution":14,
+		"intelligence":7,
+		"wisdom":9,
+		"charisma":10,
+		"actions":{
+			"attack":[
+				{
+					"number":1,
+					"name":"battleaxe",
+					"attack_bonus":5,
+					"damage_dice":"2d10",
+					"damage_bonus":3,
+					"damage_type":"slashing"
+				}
+			]
+		}
+	},
+	{
+		"name":"Griffon",
+		"armor_class":12,
+		"hit_points":91,
+		"strength":18,
+		"dexterity":15,
+		"constitution":16,
+		"intelligence":2,
+		"wisdom":13,
+		"charisma":8,
+		"actions":{
+			"attack":[
+				{
+					"number":1,
+					"name":"beak",
+					"attack_bonus":6,
+					"damage_dice":"1d8",
+					"damage_bonus":4,
+					"damage_type":"piercing"
+				},
+				{
+					"number":1,
+					"name":"claws",
+					"attack_bonus":6,
+					"damage_dice":"2d6",
+					"damage_bonus":4,
+					"damage_type":"slashing"
+				}
+			]
+		}
+	},
+	{
+		"name":"Hill Giant",
+		"armor_class":13,
+		"hit_points":160,
+		"strength":21,
+		"dexterity":8,
+		"constitution":19,
+		"intelligence":5,
+		"wisdom":9,
+		"charisma":6,
+		"actions":{
+			"attack":[
+				{
+					"number":2,
+					"name":"greatclub",
+					"attack_bonus":8,
+					"damage_dice":"3d8",
+					"damage_bonus":5,
+					"damage_type":"bludgeoning"
+				}
+			]
+		}
+	},
+	{
+		"name":"Test Monk",
+		"armor_class":20,
+		"hit_points":116,
+		"strength":11,
+		"dexterity":20,
+		"constitution":15,
+		"intelligence":13,
+		"wisdom":18,
+		"charisma":13,
+		"actions":{
+			"attack":[
+				{
+					"number":2,
+					"name":"quarterstaff",
+					"attack_bonus":8,
+					"damage_dice":"1d8",
+					"damage_bonus":5,
+					"damage_type":"bludgeoning"
+				},
+				{
+					"number":2,
+					"name":"unarmed",
+					"attack_bonus":8,
+					"damage_dice":"1d6",
+					"damage_bonus":5,
+					"damage_type":"bludgeoning"
+				}
+			]
+		}
+	},
 ]
 
 // generate a random number between low and high
@@ -291,6 +522,9 @@ function fight() {
 
 					// compare against opponent AC
 					if (atk > creatures[second].armor_class) {
+						if(creatures[first].actions.attack[a].name == "quarterstaff" && roll == 19) {
+							roll = 20;
+						}
 						var damage = damageValue(creatures[first].actions.attack[a].damage_dice, creatures[first].actions.attack[a].damage_bonus, roll == 20); 
 						hpSecond -= damage;
 						
@@ -333,6 +567,9 @@ function fight() {
 
 						// compare against opponent AC
 						if (atk > creatures[first].armor_class) {
+							if(creatures[second].actions.attack[a].name == "quarterstaff" && roll == 19) {
+								roll = 20;
+							}
 							var damage = damageValue(creatures[second].actions.attack[a].damage_dice, creatures[second].actions.attack[a].damage_bonus, roll == 20); 
 							hpFirst -= damage;
 							
