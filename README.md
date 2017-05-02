@@ -14,6 +14,7 @@ Built using JavaScript and jQuery, with data being pulled from a JSON object.
 
 
 ### TODO
+- add 'add creature' functionality  
 - add spells (game mechanic)
 - randomize or different action options
   - intelligent action selection (i.e. use a healing spell when low on health)
@@ -21,8 +22,6 @@ Built using JavaScript and jQuery, with data being pulled from a JSON object.
 - incorporate saving rolls (game mechanic)
 - incorporate more monsters
   - https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json
-- add creature functionality  
 
-  
-  
-Time spent: ~4 hours
+
+

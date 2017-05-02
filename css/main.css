@@ -38,8 +38,8 @@ body > .container {
 
 .log {
 	margin-top: 2%;
-	/*display: inline-block;*/
-
+	display: inline-block;
+	height: 100%;
 }
 
 .bubble {
@@ -48,7 +48,29 @@ body > .container {
 	border-radius: 5px;
 	width: 25%;
 	display: inline-block;
-
+	vertical-align: top;
+	height: 100%;
 
 	/*margin: 1%;*/
+}
+
+
+.adder {
+	height: 100vh;
+	width: 100%;
+}
+
+
+
+.input-group {
+	display: inline-block;
+}
+
+
+.res-btn {
+	margin-top: 2%;
+}
+
+.imm-btn {
+	margin-top: 2%;
 }

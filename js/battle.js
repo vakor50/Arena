@@ -1,568 +1,4 @@
-var creatures = [
-	{
-		"name":"Gladiator",
-		"armor_class":16,
-		"hit_points":165,
-		"strength":18,
-		"dexterity":15,
-		"constitution":16,
-		"intelligence":10,
-		"wisdom":12,
-		"charisma":15,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":3,
-					"name":"spear",
-					"attack_bonus":7,
-					"damage_dice":"3d8",
-					"damage_bonus":4,
-					"damage_type":"piercing"
-				}
-			]
-		}
-	},
-	{
-		"name":"Archer",
-		"armor_class":17,
-		"hit_points":100,
-		"strength":18,
-		"dexterity":16,
-		"constitution":16,
-		"intelligence":12,
-		"wisdom":10,
-		"charisma":14,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":2,
-					"name":"bow",
-					"attack_bonus":7,
-					"damage_dice":"1d8",
-					"damage_bonus":4,
-					"damage_type":"piercing"
-				}
-			]
-		}
-	},
-	{
-		"name":"Goblin",
-		"armor_class":15,
-		"hit_points":12,
-		"strength":8,
-		"dexterity":14,
-		"constitution":10,
-		"intelligence":10,
-		"wisdom":8,
-		"charisma":8,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":1,
-					"name":"scimitar",
-					"attack_bonus":4,
-					"damage_dice":"1d6",
-					"damage_bonus":2,
-					"damage_type":"slashing"
-				}
-			]
-		}
-	},
-	{
-		"name":"Kobold",
-		"armor_class":12,
-		"hit_points":10,
-		"strength":7,
-		"dexterity":15,
-		"constitution":9,
-		"intelligence":8,
-		"wisdom":7,
-		"charisma":8,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":1,
-					"name":"dagger",
-					"attack_bonus":4,
-					"damage_dice":"1d4",
-					"damage_bonus":2,
-					"damage_type":"piercing"
-				}
-			]
-		}
-	},
-	{
-		"name":"Orc",
-		"armor_class":13,
-		"hit_points":22,
-		"strength":16,
-		"dexterity":12,
-		"constitution":16,
-		"intelligence":7,
-		"wisdom":11,
-		"charisma":10,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":1,
-					"name":"greataxe",
-					"attack_bonus":5,
-					"damage_dice":"1d12",
-					"damage_bonus":3,
-					"damage_type":"slashing"
-				}
-			]
-		}
-	},
-	{
-		"name":"Hobgoblin",
-		"armor_class":18,
-		"hit_points":18,
-		"strength":13,
-		"dexterity":12,
-		"constitution":12,
-		"intelligence":10,
-		"wisdom":10,
-		"charisma":9,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":1,
-					"name":"longsword",
-					"attack_bonus":3,
-					"damage_dice":"1d10",
-					"damage_bonus":1,
-					"damage_type":"slashing"
-				}
-			]
-		}
-	},
-	{
-		"name":"Bandit",
-		"armor_class":12,
-		"hit_points":18,
-		"strength":11,
-		"dexterity":12,
-		"constitution":12,
-		"intelligence":10,
-		"wisdom":10,
-		"charisma":10,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":1,
-					"name":"scimitar",
-					"attack_bonus":3,
-					"damage_dice":"1d6",
-					"damage_bonus":1,
-					"damage_type":"slashing"
-				}
-			]
-		}
-	},
-	{
-		"name":"Bandit Captain",
-		"armor_class":15,
-		"hit_points":100,
-		"strength":15,
-		"dexterity":16,
-		"constitution":14,
-		"intelligence":14,
-		"wisdom":11,
-		"charisma":14,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":2,
-					"name":"scimitar",
-					"attack_bonus":5,
-					"damage_dice":"1d6",
-					"damage_bonus":3,
-					"damage_type":"slashing"
-				},
-				{
-					"number":1,
-					"name":"dagger",
-					"attack_bonus":5,
-					"damage_dice":"1d4",
-					"damage_bonus":3,
-					"damage_type":"piercing"
-				}
-			]
-		}
-	},
-	{
-		"name":"Berserker",
-		"armor_class":13,
-		"hit_points":99,
-		"strength":16,
-		"dexterity":12,
-		"constitution":17,
-		"intelligence":9,
-		"wisdom":11,
-		"charisma":9,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":1,
-					"name":"greataxe",
-					"attack_bonus":5,
-					"damage_dice":"1d12",
-					"damage_bonus":3,
-					"damage_type":"slashing"
-				}
-			]
-		}
-	},
-	{
-		"name":"Knight",
-		"armor_class":18,
-		"hit_points":80,
-		"strength":16,
-		"dexterity":11,
-		"constitution":14,
-		"intelligence":11,
-		"wisdom":11,
-		"charisma":15,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":2,
-					"name":"greatsword",
-					"attack_bonus":5,
-					"damage_dice":"2d6",
-					"damage_bonus":3,
-					"damage_type":"slashing"
-				}
-			]
-		}
-	},
-	{
-		"name":"Scout",
-		"armor_class":13,
-		"hit_points":27,
-		"strength":11,
-		"dexterity":14,
-		"constitution":12,
-		"intelligence":11,
-		"wisdom":13,
-		"charisma":11,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":2,
-					"name":"longbow",
-					"attack_bonus":4,
-					"damage_dice":"1d8",
-					"damage_bonus":2,
-					"damage_type":"piercing"
-				}
-			]
-		}
-	},
-	{
-		"name":"Veteran",
-		"armor_class":17,
-		"hit_points":90,
-		"strength":16,
-		"dexterity":13,
-		"constitution":14,
-		"intelligence":10,
-		"wisdom":11,
-		"charisma":10,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":2,
-					"name":"longbow",
-					"attack_bonus":5,
-					"damage_dice":"1d8",
-					"damage_bonus":3,
-					"damage_type":"slashing"
-				},
-				{
-					"number":1,
-					"name":"shortsword",
-					"attack_bonus":5,
-					"damage_dice":"1d6",
-					"damage_bonus":3,
-					"damage_type":"slashing"
-				}
-			]
-		}
-	},
-	{
-		"name":"Ogre",
-		"armor_class":11,
-		"hit_points":91,
-		"strength":19,
-		"dexterity":8,
-		"constitution":16,
-		"intelligence":5,
-		"wisdom":7,
-		"charisma":7,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":1,
-					"name":"greatclub",
-					"attack_bonus":6,
-					"damage_dice":"2d8",
-					"damage_bonus":4,
-					"damage_type":"budgeoning"
-				}
-			]
-		}
-	},
-	{
-		"name":"Half-Ogre",
-		"armor_class":12,
-		"hit_points":48,
-		"strength":17,
-		"dexterity":10,
-		"constitution":14,
-		"intelligence":7,
-		"wisdom":9,
-		"charisma":10,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":1,
-					"name":"battleaxe",
-					"attack_bonus":5,
-					"damage_dice":"2d10",
-					"damage_bonus":3,
-					"damage_type":"slashing"
-				}
-			]
-		}
-	},
-	{
-		"name":"Griffon",
-		"armor_class":12,
-		"hit_points":91,
-		"strength":18,
-		"dexterity":15,
-		"constitution":16,
-		"intelligence":2,
-		"wisdom":13,
-		"charisma":8,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":1,
-					"name":"beak",
-					"attack_bonus":6,
-					"damage_dice":"1d8",
-					"damage_bonus":4,
-					"damage_type":"piercing"
-				},
-				{
-					"number":1,
-					"name":"claws",
-					"attack_bonus":6,
-					"damage_dice":"2d6",
-					"damage_bonus":4,
-					"damage_type":"slashing"
-				}
-			]
-		}
-	},
-	{
-		"name":"Hill Giant",
-		"armor_class":13,
-		"hit_points":160,
-		"strength":21,
-		"dexterity":8,
-		"constitution":19,
-		"intelligence":5,
-		"wisdom":9,
-		"charisma":6,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":2,
-					"name":"greatclub",
-					"attack_bonus":8,
-					"damage_dice":"3d8",
-					"damage_bonus":5,
-					"damage_type":"bludgeoning"
-				}
-			]
-		}
-	},
-	{
-		"name":"Test Monk",
-		"armor_class":19,
-		"hit_points":58,
-		"strength":11,
-		"dexterity":20,
-		"constitution":15,
-		"intelligence":13,
-		"wisdom":18,
-		"charisma":13,
-		"damage_resistances":["piercing", "slashing"],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":2,
-					"name":"quarterstaff",
-					"attack_bonus":8,
-					"damage_dice":"1d8",
-					"damage_bonus":5,
-					"damage_type":"bludgeoning"
-				},
-				{
-					"number":2,
-					"name":"unarmed",
-					"attack_bonus":8,
-					"damage_dice":"1d6",
-					"damage_bonus":5,
-					"damage_type":"bludgeoning"
-				}
-			]
-		}
-	},
-	{
-		"name":"Test Barbarian",
-		"armor_class":18,
-		"hit_points":85,
-		"strength":11,
-		"dexterity":20,
-		"constitution":15,
-		"intelligence":13,
-		"wisdom":18,
-		"charisma":13,
-		"damage_resistances":["acid","bludgeoning","cold","fire","force","lightning","necrotic","piercing","poison","radiant","slashing","thunder"],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":2,
-					"name":"greatsword",
-					"attack_bonus":12,
-					"damage_dice":"2d6",
-					"damage_bonus":11,
-					"damage_type":"slashing",
-					"great_weapon_fighting":true,
-					"crit_range":20
-				}
-			]
-		}
-	},
-	{
-		"name":"Test Fighter",
-		"armor_class":19,
-		"hit_points":114,
-		"strength":11,
-		"dexterity":20,
-		"constitution":15,
-		"intelligence":13,
-		"wisdom":18,
-		"charisma":13,
-		"damage_resistances":[],
-		"damage_immunities":[],
-		"actions":{
-			"attack":[
-				{
-					"number":3,
-					"name":"longsword",
-					"attack_bonus":9,
-					"damage_dice":"4d6",
-					"damage_bonus":5,
-					"damage_type":"slashing",
-					"crit_range":19
-				}
-			]
-		}
-	},
-	{
-		"name":"Clay Golem",
-		"armor_class":14,
-		"hit_points":196,
-		"strength":20,
-		"dexterity":9,
-		"constitution":18,
-		"intelligence":3,
-		"wisdom":8,
-		"charisma":1,
-		"damage_resistances":[],
-		"damage_immunities":["acid", "poison", "psychic"],
-		"actions":{
-			"attack":[
-				{
-					"number":2,
-					"name":"slam",
-					"attack_bonus":8,
-					"damage_dice":"2d10",
-					"damage_bonus":5,
-					"damage_type":"bludgeoning",
-					"crit_range":20
-				}
-			]
-		}
-	},
-	{
-		"name":"Flesh Golem",
-		"armor_class":9,
-		"hit_points":198,
-		"strength":19,
-		"dexterity":9,
-		"constitution":18,
-		"intelligence":6,
-		"wisdom":10,
-		"charisma":5,
-		"damage_resistances":[],
-		"damage_immunities":["lightning", "poison"],
-		"actions":{
-			"attack":[
-				{
-					"number":2,
-					"name":"slam",
-					"attack_bonus":7,
-					"damage_dice":"2d8",
-					"damage_bonus":4,
-					"damage_type":"bludgeoning",
-					"crit_range":20
-				}
-			]
-		}
-	},
-];
-
+// return true if an array contains an instance of element
 Array.prototype.contains = function(element){
     return this.indexOf(element) > -1;
 };
@@ -582,9 +18,6 @@ function generateSumRandom(n, low, high) {
 	var sum = 0;
 	for (var i = 0; i < n; i++) {
 		var temp = generateRandom(low, high);
-		// if (high == 6 && (temp == 1 || temp == 2)) {
-		// 	temp = generateRandom(low, high);
-		// }
 		sum += temp;
 	}
 	return sum;
@@ -593,10 +26,9 @@ function generateSumRandom(n, low, high) {
 
 // use the damage string to generate a damage value
 // EX:
-//		damageValue(creatures[one].Action.Attack[0].Damage, false)
-// TODO:
-// 		
+//		damageValue(creatures[one].Action.Attack[0].Damage, false, false)
 function damageValue(dmg_dice, dmg_bonus, crit, gwf) {
+	// separate die roll around 'd'
 	var splitD = dmg_dice.split("d");
 	
 	var numDie = parseInt(splitD[0]);
@@ -604,19 +36,21 @@ function damageValue(dmg_dice, dmg_bonus, crit, gwf) {
 
 	var critical = (crit) ? 2 : 1;
 
+	// sum 
 	var dieRoll = 0;
+
+	// roll each die and sum result
 	for (var i = 0; i < numDie; i++) {
 		var temp = generateRandom(1, dieValue);
+
+		// if roll uses Great Weapon Fighting
 		if (gwf && (temp == 1 || temp == 2)) {
 			temp = generateRandom(1, dieValue);
 		}
 		dieRoll += temp;
 	}
 
-	// generateSumRandom(numDie, 1, dieValue);
-
 	return (critical * dieRoll) + dmg_bonus;
-
 }
 
 
@@ -629,15 +63,18 @@ var secondHitRatio = [];
 var rounds = [];
 
 function fight() {
+	// get creature IDs from 
 	var one = $("#comb-1 option:selected").val();
 	var two = $("#comb-2 option:selected").val();
 
+	// roll initiative
 	var initOne = generateRandom(1, 20) + calculateModifier(creatures[one].dexterity);
 	var initTwo = generateRandom(1, 20) + calculateModifier(creatures[two].dexterity);
 
 	var first = 0;
 	var second = 0;
 
+	// decide who goes first
 	if (initOne > initTwo) {
 		first = one;
 		second = two;
@@ -646,151 +83,170 @@ function fight() {
 		second = one;
 	}
 
+	// Set hit points
 	var hpFirst = creatures[first].hit_points;
 	var hpSecond = creatures[second].hit_points;
 
+	// Set AC
 	var acFirst = creatures[first].armor_class;
 	var acSecond = creatures[second].armor_class;
 
+	// Reset all counters
 	firstCrit = 0;
 	secondCrit = 0;
 
-	var firstCount = 0;
 	var firstHit = 0;
-	var secondCount = 0;
+	var firstCount = 0;
 	var secondHit = 0;
+	var secondCount = 0;
 
 	var roundCount = 0;
 
 	while(hpFirst > 0 && hpSecond > 0) {
+		
 		roundCount++;
 
-		// first creature attacks second creature
+		// reset number of hits vs. number of attacks
 		firstHit = 0;
 		firstCount = 0;
 		secondHit = 0;
 		secondCount = 0;
+
+		// first creature attacks second creature
+		// for all attacks
 		for (var a = 0; a < creatures[first].actions.attack.length; a++) {
+			// for the number of times this attack is made
 			for (var i = 0; i < creatures[first].actions.attack[a].number; i++) {
+				// attack as long as Creature 2 is still alive
 				if (hpSecond > 0) {
 					// roll d20
 					var roll = generateRandom(1, 20);
 
+					// increment the number of critical hits
 					if (roll == 20) {
 						firstCrit++;
 					}
 
+					// Creature 1's attack roll
 					var atk = roll + creatures[first].actions.attack[a].attack_bonus;
-					// $(".log").append("<p>" + creatures[first].name + "1 rolled " + roll + " + " + (atk-roll) + " to hit!</p>");
 
-					// compare against opponent AC
+					// Compare the attack roll against Creature 2's AC
 					if (atk > creatures[second].armor_class) {
+						// check if Creature 1 has an expanded crit range
 						if(creatures[first].actions.attack[a].crit_range <= roll) {
 							roll = 20;
 							firstCrit++;
 						}
 
+						// account for Great Weapon Fighting style's ability to reroll 1's and 2's once
 						var gwf = false;
 						if (creatures[first].actions.attack[a].hasOwnProperty('great_weapon_fighting')) {
 							gwf = true;
 						}
 
+						// Find the damage dealt by Creature 1's attacks 
 						var damage = damageValue(creatures[first].actions.attack[a].damage_dice, creatures[first].actions.attack[a].damage_bonus, roll == 20, gwf); 
 
+						// reduce the damage if Creature 2 has any resistances or immunities
+						// damage = 0 if Creature 2 has immunity to this damage type
+						// damage halved if Creature 2 has resistance to this damage type
 						if (creatures[second].damage_immunities.contains(creatures[first].actions.attack[a].damage_type)) {
 							damage = 0;
 						} else if (creatures[second].damage_resistances.contains(creatures[first].actions.attack[a].damage_type)) {
 							damage = Math.ceil(damage / 2);
 						}
 
+						// decrement the damage from Creature 2's health
 						hpSecond -= damage;
 						
-						// $(".log").append("<p>" + creatures[first].name + "1 made a(n) " + creatures[first].actions.attack[0].name + " attack against " + creatures[second].name + "2</p>");
-						// $(".log").append("<p>" + creatures[second].name + "2 was dealt " + damage + " " + creatures[first].actions.attack[0].damage_type + " damage.</p>");
-						// $(".log").append("<p>" + creatures[second].name + "2 has " + hpSecond + " hp remaining.</p>");
+						// Creature 1 wins
 						if (hpSecond <= 0) {
-							// $(".log").append("<p><h4>" + creatures[second].name + "2 is dead!</h4></p>");
 							winner.push(first);
 						}
+
+						// increment the number of hits made by Creature 1
 						firstHit++;
-					} else {
-						// $(".log").append("<p>" + creatures[first].name + "1 missed!</p>");
-					}
-					
+					}				
 				}
+
+				// increment the number of attacks made by Creature 1
 				firstCount++;
 			}
 		}
-
-
-		// $(".log").append("<br>");
-
 		
 
-		// second creature attacks first creature
+		// second creature attacks first creature if it still has health
 		if (hpSecond > 0) {
+			// for all attacks
 			for (var a = 0; a < creatures[second].actions.attack.length; a++) {
+				// for the number of times this attack is made
 				for (var i = 0; i < creatures[second].actions.attack[a].number; i++) {
+					// attack as long as Creature 1 is still alive
 					if (hpFirst > 0) {
 						// roll d20
 						var roll = generateRandom(1, 20);
 
+						// increment the number of critical hits
 						if (roll == 20) {
 							secondCrit++;
 						}
 
+						// Creature 2's attack roll
 						var atk = roll + creatures[second].actions.attack[a].attack_bonus;
-						// $(".log").append("<p>" + creatures[second].name + "2 rolled " + roll + " + " + (atk-roll) + " to hit!</p>");
 
-						// compare against opponent AC
+						// Compare the attack roll against Creature 1's AC
 						if (atk > creatures[first].armor_class) {
+							// check if Creature 2 has an expanded crit range
 							if(creatures[second].actions.attack[a].crit_range <= roll) {
 								roll = 20;
 								secondCrit++;
 							}
 
+							// account for Great Weapon Fighting style's ability to reroll 1's and 2's once
 							var gwf = false;
 							if (creatures[second].actions.attack[a].hasOwnProperty('great_weapon_fighting')) {
 								gwf = true;
 							}
 
+							// Find the damage dealt by Creature 2's attacks 
 							var damage = damageValue(creatures[second].actions.attack[a].damage_dice, creatures[second].actions.attack[a].damage_bonus, roll == 20, creatures[second].actions.attack[a].great_weapon_fighting); 
 
+							// reduce the damage if Creature 1 has any resistances or immunities
+							// damage = 0 if Creature 1 has immunity to this damage type
+							// damage halved if Creature 1 has resistance to this damage type
 							if (creatures[first].damage_immunities.contains(creatures[second].actions.attack[a].damage_type)) {
 								damage = 0;
 							} else if (creatures[first].damage_resistances.contains(creatures[second].actions.attack[a].damage_type)) {
 								damage = Math.ceil(damage / 2);
 							}
 
+							// decrement the damage from Creature 1's health
 							hpFirst -= damage;
 							
-							// $(".log").append("<p>" + creatures[second].name + "2 made a(n) " + creatures[second].actions.attack[0].name + " attack against " + creatures[first].name + "1.</p>");
-							// $(".log").append("<p>" + creatures[first].name + "1 was dealt " + damage + " " + creatures[second].actions.attack[0].damage_type + " damage.</p>");
-							// $(".log").append("<p>" + creatures[first].name + "1 has " + hpFirst + " hp remaining.</p>");
+							// Creature 2 wins
 							if (hpFirst <= 0) {
-								// $(".log").append("<p><h4>" + creatures[first].name + "1 is dead!</h4></p>");
 								winner.push(second);
 							}
+
+							// increment the number of hits made by Creature 2
 							secondHit++;
-						} else {
-							// $(".log").append("<p>" + creatures[second].name + "2 missed!</p>");
-						}
-						
+						} 
 					}
+
+					// increment the number of attacks made by Creature 2
 					secondCount++;
 				}
 			}
 		}
 
-		// $(".log").append("<br>");
 
-
-
+		// find the number of hits / the number of attacks
 		var f = (firstCount == 0) ? 0 : firstHit/firstCount;
 		var s = (secondCount == 0) ? 0 : secondHit/secondCount;
 
-		// console.log(f);
 
+		// store the hit-miss ratio for each creature for this round
+		// account for initiative when storing data
 		if (first == one) {
 			firstHitRatio.push(f);
 			secondHitRatio.push(s);
@@ -800,11 +256,15 @@ function fight() {
 		}
 	}
 
+	// if a creature has been reduced to lower than 0 hp, set it to 0 for margin calculation for this round
 	if (hpFirst < 0) {hpFirst = 0;}
 	if (hpSecond < 0) {hpSecond = 0;}
 
+	// store the margin of defeat for the fight
 	margin.push(Math.abs(hpFirst - hpSecond));
 
+	// store the count for the number of crits for each creature for this round
+	// account for initiative when storing data
 	if (first == one) {
 		creatOneCrit.push(firstCrit);
 		creatTwoCrit.push(secondCrit);
@@ -822,11 +282,13 @@ function fight() {
 
 
 $(".fight").click(function() {
+	// empty the output log
 	$(".log").empty();
-	console.log("combat");
 
+	// set the number of trials
 	var cases = 1000;
 
+	// Run a fight 'cases' times
 	for (var i = 0; i < cases; i++) {
 		fight();
 	}
@@ -834,6 +296,7 @@ $(".fight").click(function() {
 	var one = $("#comb-1 option:selected").val();
 	var two = $("#comb-2 option:selected").val();
 
+	// Average the number of crits for both Creature 1 and 2
 	var numFirst = 0
 	critsOne = 0;
 	critsTwo = 0;
@@ -847,52 +310,64 @@ $(".fight").click(function() {
 		mDiff += margin[i];
 	}
 
+	// Average the hit-miss ratio for Creature 1
 	var oneRatio = 0;
 	for (var i = 0; i < firstHitRatio.length; i++) {
 		oneRatio += firstHitRatio[i];
 	}
 	oneRatio = oneRatio/firstHitRatio.length;
 
+	// Average the hit-miss ratio for Creature 2
 	var twoRatio = 0;
 	for (var i = 0; i < secondHitRatio.length; i++) {
 		twoRatio += secondHitRatio[i];
 	}
 	twoRatio = twoRatio/secondHitRatio.length;
 
+	// Average the number of rounds of each fight
 	var roundAvg = 0;
 	for (var i = 0; i < rounds.length; i++) {
 		roundAvg += rounds[i];
 	}
 	roundAvg = roundAvg/rounds.length;
 
-	// console.log("1: " + firstHitRatio);
-	// console.log("2: " + secondHitRatio);
+	
 
-	// console.log(winner);
-	// console.log(creatOneCrit);
-	// console.log(creatTwoCrit);
-	// console.log(margin);
+	// Print out all analytics
 
-	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[one].name + " won " + numFirst + "/"+ cases +" times.</h4></div>");
-	$(".log").append("<div class=\"bubble \"><h4>Each fight lasted an average "+ roundAvg +" rounds.</h4></div>");
-	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[one].name + " had an average of " + (critsOne/cases).toFixed(3) + " critical hits per fight.</h4></div>");
-	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[two].name + " had an average of " + (critsTwo/cases).toFixed(3) + " critical hits per fight.</h4></div>");
-	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[one].name + " had an average attack hit ratio of " + oneRatio.toFixed(3) + " per fight.</h4></div>");
-	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[two].name + " had an average attack hit ratio of " + twoRatio.toFixed(3) + " per fight.</h4></div>");
-	$(".log").append("<div class=\"bubble \"><h4>There was an average margin of defeat of " + (mDiff/cases).toFixed(3) + " hit points.</h4></div>");
+	// Creature A won X/S times.
+	$(".log").append("<div class=\"bubble \"><h4>The <span style=\"color: #337ab7\">" + creatures[one].name + "</span> won <span style=\"color: #337ab7\">" + numFirst + "</span>/"+ cases +" times.</h4></div>");
+	// Each fight lasted an average X rounds.
+	$(".log").append("<div class=\"bubble \"><h4>Each fight lasted an average <span style=\"color: #337ab7\">"+ roundAvg +" rounds</span>.</h4></div>");
+	// The A had an average X critical hits per fight.
+	$(".log").append("<div class=\"bubble \"><h4>The <span style=\"color: #337ab7\">" + creatures[one].name + "</span> had an average of <span style=\"color: #337ab7\">" + (critsOne/cases).toFixed(3) + " critical hits </span> per fight.</h4></div>");
+	// The B had an average Y critical hits per fight.
+	$(".log").append("<div class=\"bubble \"><h4>The <span style=\"color: #337ab7\">" + creatures[two].name + "</span> had an average of <span style=\"color: #337ab7\">" + (critsTwo/cases).toFixed(3) + " critical hits </span> per fight.</h4></div>");
+	// The A had an average attack hit-miss ratio of X per fight.
+	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[one].name + " had an average attack <span style=\"color: #337ab7\">hit-miss ratio</span> of <span style=\"color: #337ab7\">" + oneRatio.toFixed(3) + "</span> per fight.</h4></div>");
+	// The B had an average attack hit-miss ratio of Y per fight.
+	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[two].name + " had an average attack <span style=\"color: #337ab7\">hit-miss ratio</span> of <span style=\"color: #337ab7\">" + twoRatio.toFixed(3) + "</span> per fight.</h4></div>");
+	// There was an average margin of defeat of X hit points.
+	$(".log").append("<div class=\"bubble \"><h4>There was an average <span style=\"color: #337ab7\">margin</span> of defeat of <span style=\"color: #337ab7\">" + (mDiff/cases).toFixed(3) + " hit points</span>.</h4></div>");
 
-	// after calculations, reset data stores
+	// After calculations, reset data stores
 	winner = [];
 	creatOneCrit = [];
 	creatTwoCrit = [];
 	margin = [];
 });
 
+
+
 $(document).ready(function() {
+	$('.dropdown-toggle').dropdown()
+	// populate drop-down with creatures in JSON
 	for (var i = 0; i < creatures.length; i++) {
 		console.log(creatures[i].name);
 		$("#comb-1").append('<option value="' + i + '">' + creatures[i].name + '</option>');
 		$("#comb-2").append('<option value="' + i + '">' + creatures[i].name + '</option>');
 	}
+
+	
 });
 
