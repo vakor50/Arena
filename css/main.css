@@ -1,29 +1,54 @@
 
 html {
-  position: relative;
-  min-height: 100%;
+	position: relative;
+	min-height: 100%;
 }
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f8f8f8;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #f8f8f8;
 }
 
 body > .container {
-  padding: 60px 15px 0;
+	padding: 60px 15px 0;
 }
 
 
 .footer > .container {
-  /*padding-right: 15px;*/
-  /*padding-left: 15px;*/
-  padding: 1%;
+	/*padding-right: 15px;*/
+	/*padding-left: 15px;*/
+	padding: 1%;
 }
 
+
+.buttons {
+	display: inline-block;
+}
+
+.row {
+
+}
+
+.log {
+	margin-top: 2%;
+	/*display: inline-block;*/
+
+}
+
+.bubble {
+	border: 1px solid lightgray;
+	padding: 5%;
+	border-radius: 5px;
+	width: 25%;
+	display: inline-block;
+
+
+	/*margin: 1%;*/
+}

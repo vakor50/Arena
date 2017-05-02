@@ -425,15 +425,15 @@ var creatures = [
 	},
 	{
 		"name":"Test Monk",
-		"armor_class":20,
-		"hit_points":116,
+		"armor_class":19,
+		"hit_points":58,
 		"strength":11,
 		"dexterity":20,
 		"constitution":15,
 		"intelligence":13,
 		"wisdom":18,
 		"charisma":13,
-		"damage_resistances":[],
+		"damage_resistances":["piercing", "slashing"],
 		"damage_immunities":[],
 		"actions":{
 			"attack":[
@@ -509,6 +509,58 @@ var creatures = [
 			]
 		}
 	},
+	{
+		"name":"Clay Golem",
+		"armor_class":14,
+		"hit_points":196,
+		"strength":20,
+		"dexterity":9,
+		"constitution":18,
+		"intelligence":3,
+		"wisdom":8,
+		"charisma":1,
+		"damage_resistances":[],
+		"damage_immunities":["acid", "poison", "psychic"],
+		"actions":{
+			"attack":[
+				{
+					"number":2,
+					"name":"slam",
+					"attack_bonus":8,
+					"damage_dice":"2d10",
+					"damage_bonus":5,
+					"damage_type":"bludgeoning",
+					"crit_range":20
+				}
+			]
+		}
+	},
+	{
+		"name":"Flesh Golem",
+		"armor_class":9,
+		"hit_points":198,
+		"strength":19,
+		"dexterity":9,
+		"constitution":18,
+		"intelligence":6,
+		"wisdom":10,
+		"charisma":5,
+		"damage_resistances":[],
+		"damage_immunities":["lightning", "poison"],
+		"actions":{
+			"attack":[
+				{
+					"number":2,
+					"name":"slam",
+					"attack_bonus":7,
+					"damage_dice":"2d8",
+					"damage_bonus":4,
+					"damage_type":"bludgeoning",
+					"crit_range":20
+				}
+			]
+		}
+	},
 ];
 
 Array.prototype.contains = function(element){
@@ -574,6 +626,7 @@ var creatTwoCrit = [];
 var margin = [];
 var firstHitRatio = [];
 var secondHitRatio = [];
+var rounds = [];
 
 function fight() {
 	var one = $("#comb-1 option:selected").val();
@@ -607,7 +660,11 @@ function fight() {
 	var secondCount = 0;
 	var secondHit = 0;
 
+	var roundCount = 0;
+
 	while(hpFirst > 0 && hpSecond > 0) {
+		roundCount++;
+
 		// first creature attacks second creature
 		firstHit = 0;
 		firstCount = 0;
@@ -759,6 +816,8 @@ function fight() {
 
 	hpFirst = creatures[first].hit_points;
 	hpSecond = creatures[second].hit_points;
+
+	rounds.push(roundCount);
 }
 
 
@@ -800,6 +859,12 @@ $(".fight").click(function() {
 	}
 	twoRatio = twoRatio/secondHitRatio.length;
 
+	var roundAvg = 0;
+	for (var i = 0; i < rounds.length; i++) {
+		roundAvg += rounds[i];
+	}
+	roundAvg = roundAvg/rounds.length;
+
 	// console.log("1: " + firstHitRatio);
 	// console.log("2: " + secondHitRatio);
 
@@ -808,12 +873,13 @@ $(".fight").click(function() {
 	// console.log(creatTwoCrit);
 	// console.log(margin);
 
-	$(".log").append("<p>The " + creatures[one].name + " won " + numFirst + "/"+ cases +" times.</p>");
-	$(".log").append("<p>The " + creatures[one].name + " had an average of " + (critsOne/cases).toFixed(3) + " critical hits per fight.</p>");
-	$(".log").append("<p>The " + creatures[two].name + " had an average of " + (critsTwo/cases).toFixed(3) + " critical hits per fight.</p>");
-	$(".log").append("<p>The " + creatures[one].name + " had an average attack hit ratio of " + oneRatio.toFixed(3) + " per fight.</p>");
-	$(".log").append("<p>The " + creatures[two].name + " had an average attack hit ratio of " + twoRatio.toFixed(3) + " per fight.</p>");
-	$(".log").append("<p>There was an average margin of defeat of " + (mDiff/cases).toFixed(3) + " hit points.</p>")
+	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[one].name + " won " + numFirst + "/"+ cases +" times.</h4></div>");
+	$(".log").append("<div class=\"bubble \"><h4>Each fight lasted an average "+ roundAvg +" rounds.</h4></div>");
+	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[one].name + " had an average of " + (critsOne/cases).toFixed(3) + " critical hits per fight.</h4></div>");
+	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[two].name + " had an average of " + (critsTwo/cases).toFixed(3) + " critical hits per fight.</h4></div>");
+	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[one].name + " had an average attack hit ratio of " + oneRatio.toFixed(3) + " per fight.</h4></div>");
+	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[two].name + " had an average attack hit ratio of " + twoRatio.toFixed(3) + " per fight.</h4></div>");
+	$(".log").append("<div class=\"bubble \"><h4>There was an average margin of defeat of " + (mDiff/cases).toFixed(3) + " hit points.</h4></div>");
 
 	// after calculations, reset data stores
 	winner = [];
