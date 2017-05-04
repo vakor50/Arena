@@ -25,6 +25,12 @@ $( '.dropdown-menu a' ).on( 'click', function( event ) {
 	return false;
 });
 
+
+function setType(type) {
+	$("#dropdownMenu1").html(resistances[type] + '&nbsp;<span class="caret"></span>');
+	$("#dropdownMenu1").val(resistances[type]);
+}
+
 $(".add").click(function() {
 	$(".arena").hide();
 	$("body").prepend("<div class=\"adder\"></div>");
@@ -64,7 +70,7 @@ $(".add").click(function() {
 	// resistence pop-out
 	$(".options").append('<div class="res-modal modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"></div>');
 	$(".res-modal").append('<div class="modal-dialog modal-sm" role="document"><div class="res-modal-content modal-content"></div></div>');
-	$(".res-modal-content").append('<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4></div>');
+	$(".res-modal-content").append('<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="gridSystemModalLabel">Choose Damage Resistances</h4></div>');
 	$(".res-modal-content").append('<div class="modal-body"><div class="row"><div class="col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1"><ul class="resistances" style="list-style-type:none"></ul></div></div></div>');
 	
 	// add checklist
@@ -75,13 +81,73 @@ $(".add").click(function() {
 	// immunity pop-out
 	$(".options").append('<div class="imm-modal modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"></div>');
 	$(".imm-modal").append('<div class="modal-dialog modal-sm" role="document"><div class="imm-modal-content modal-content"></div></div>');
-	$(".imm-modal-content").append('<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4></div>');
+	$(".imm-modal-content").append('<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="gridSystemModalLabel">Choose Damage Immunities</h4></div>');
 	$(".imm-modal-content").append('<div class="modal-body"><div class="row"><div class="col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1"><ul class="immunities" style="list-style-type:none"></ul></div></div></div>');
 	
 	// add checklist
 	for (var i = 0; i < immunities.length; i++) {
 		$(".immunities").append('').append('<li><input type="checkbox" value="imm'+ i + '">&nbsp;' + immunities[i] + '</li>');
 	}
+
+
+	$(".options").append(row + '<div class="act-btn col-md-11 col-md-offset-1 col-lg-8 col-lg-offset-1">' + divClose + divClose);
+	$(".act-btn").append('<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".act-modal">Add Attack</button>');
+
+	$(".options").append('<div class="act-modal modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"></div>');
+	$(".act-modal").append('<div class="modal-dialog modal-lg" role="document"><div class="act-modal-content modal-content"></div></div>');
+	$(".act-modal-content").append('<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="gridSystemModalLabel">Create Attack</h4></div>');
+	$(".act-modal-content").append('<div class="modal-body"><div class="row atk-options"></div></div>');
+	$(".act-modal-content").append('<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button><button type="button" class="btn btn-primary save-atk">Save changes</button></div>');
+
+	var elemName = '<div class="col-md-2 col-lg-2">';
+	var elemInput = '<div class="col-md-9 col-md-offset-1 col-lg-9 col-lg-offset-1">';
+	var firstDiceSplit = '<div class="col-md-4 col-md-offset-1 col-lg-4 col-lg-offset-1">';
+	var secondDiceSplit = '<div class="col-md-4 col-lg-4">';
+
+	$(".atk-options").append(elemName + 'Attack Name' + divClose + elemInput + '<input type="text" class="form-control attack-name" placeholder="longsword">' + divClose);
+	$(".atk-options").append(elemName + 'Number of Attacks' + divClose + elemInput + '<input type="number" class="form-control attack-number" placeholder="1">' + divClose);
+	$(".atk-options").append(elemName + 'Attack Modifier' + divClose + elemInput + '<input type="number" class="form-control attack-modifier" placeholder="1">' + divClose);
+	$(".atk-options").append(elemName + 'Damage Dice' + divClose + firstDiceSplit + '<input type="number" class="form-control attack-die-count" placeholder="1">' + divClose + '<div class="col-md-1 col-lg-1">d</div>' + secondDiceSplit + '<input type="number" class="form-control attack-die-value" placeholder="6">' + divClose);
+	$(".atk-options").append(elemName + 'Damage Modifier' + divClose + elemInput + '<input type="number" class="form-control damage-modifier" placeholder="1">' + divClose);
+	$(".atk-options").append('<div class="dropdown col-md-12 col-lg-12"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="">Damage Type&nbsp;<span class="caret"></span></button><ul class="dropdown-menu attack-type" aria-labelledby="dropdownMenu1"></ul></div>');
+
+	for (var i = 0; i < resistances.length; i++) {
+		$(".attack-type").append('<li onclick="setType(' + i + ')"><a href="#">' + resistances[i] + '</a></li>');
+	}
+
+	$(".options").append('<div class="row attacks-added"><div class="col-md-12 col-lg-12"><h3>Attacks:</h3>' + divClose + divClose)
+
+	$(".save-atk").click(function() {
+		console.log("here");
+
+		var atk = {
+					"name":"longsword",
+					"number":1,
+					"attack_bonus":1,
+					"damage_dice":"1d6",
+					"damage_bonus":1,
+					"damage_type":"acid",
+				};
+
+		console.log(atk);
+
+		atk.name = $(".attack-name").val();
+		atk.number = $(".attack-number").val();
+		atk.attack_bonus = $(".attack-modifier").val();
+		var diecount = $(".attack-die-count").val();
+		var dievalue = $(".attack-die-value").val();
+		atk.damage_dice = diecount + "d" + dievalue;
+		atk.damage_bonus = $(".damage-modifier").val();
+		atk.damage_type = $("#dropdownMenu1").val();
+
+		
+
+		
+
+		console.log(atk);
+
+		$(".attacks-added").append('');
+	});
 
 	/*
 

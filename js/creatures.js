@@ -501,7 +501,7 @@ var creatures = [
 					"number":3,
 					"name":"longsword",
 					"attack_bonus":9,
-					"damage_dice":"4d6",
+					"damage_dice":["1d10", "2d6"],
 					"damage_bonus":5,
 					"damage_type":"slashing",
 					"crit_range":19

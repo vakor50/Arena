@@ -14,7 +14,16 @@ Built using JavaScript and jQuery, with data being pulled from a JSON object.
 
 
 ### TODO
-- add 'add creature' functionality  
+- add ability to read different die rolls in attacks
+- modify simulation function to fix repeated code
+- add 'add creature' functionality
+	- [X] Name
+	- [X] AC
+	- [X] HP
+	- [X] ASI
+	- [ ] actions
+	- [ ] storing information in js
+	- [ ] adding info to json 
 - add spells (game mechanic)
 - randomize or different action options
   - intelligent action selection (i.e. use a healing spell when low on health)
