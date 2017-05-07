@@ -31,11 +31,18 @@ function setType(type) {
 	$("#dropdownMenu1").val(resistances[type]);
 }
 
+function cancel() {
+	console.log("cancel");
+	$(".adder").hide();
+
+	$(".arena").show();
+}
+
 $(".add").click(function() {
 	$(".arena").hide();
 	$("body").prepend("<div class=\"adder\"></div>");
 	// title
-	$(".adder").append("<div class=\"container options\"><div class=\"row\"><h3 class=\"col-md-12 col-lg-12\">Add Creature</h3></div></div>");
+	$(".adder").append('<div class="container options"><div class="row\"><h3 class=\"col-md-3 col-lg-3 \">Add Creature</h3><div class=\"col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1\"><button type="button" class="cancel btn btn-primary" onclick="cancel()">Cancel</button></div></div></div>');
 
 	var row = '<div class="row">';
 	var text = '<div class="row"><div class="col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1">';
@@ -213,4 +220,7 @@ $(".add").click(function() {
 
 $(document).ready(function () {
 		$('.dropdown-toggle').dropdown();
+
+
+		
 	});

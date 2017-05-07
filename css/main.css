@@ -60,6 +60,9 @@ body > .container {
 	width: 100%;
 }
 
+.cancel {
+	margin-top: 2%;
+}
 
 
 .input-group {
