@@ -136,7 +136,7 @@ $(".add").click(function() {
 					"damage_type":"acid",
 				};
 
-		console.log(atk);
+		// console.log(atk);
 
 		atk.name = $(".attack-name").val();
 		atk.number = $(".attack-number").val();
@@ -147,13 +147,16 @@ $(".add").click(function() {
 		atk.damage_bonus = $(".damage-modifier").val();
 		atk.damage_type = $("#dropdownMenu1").val();
 
-		
-
-		
+		/*
+			Longsword. Melee Weapon Attack:+14 to hit, reach 10ft., 
+			one target. Hit : 21 (3d8 + 8) slashing damage plus 13 (3d8) 
+			lightning damage. If the balor scores a critical hit, it rolls 
+			damage dice three times, instead oftwice.
+		*/
 
 		console.log(atk);
 
-		$(".attacks-added").append('');
+		$(".attacks-added").append('<div class="col-md-11 col-md-offset-1 col-lg-11 col-lg-offset-1">' + atk.name + '. Attack: +' + atk.attack_bonus + ' to hit. Hit: ' + atk.damage_dice + ' + ' + atk.damage_bonus + ' ' + atk.damage_type + ' damage.</div>');
 	});
 
 	/*

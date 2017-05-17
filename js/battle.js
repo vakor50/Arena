@@ -516,10 +516,10 @@ $(".fight").click(function() {
 	$(".log").append("<div class=\"bubble \"><h4>The <span style=\"color: #337ab7\">" + creatures[one].name + "</span> had an average of <span style=\"color: #337ab7\">" + (critsOne/cases).toFixed(3) + " critical hits </span> per fight.</h4></div>");
 	// The B had an average Y critical hits per fight.
 	$(".log").append("<div class=\"bubble \"><h4>The <span style=\"color: #337ab7\">" + creatures[two].name + "</span> had an average of <span style=\"color: #337ab7\">" + (critsTwo/cases).toFixed(3) + " critical hits </span> per fight.</h4></div>");
-	// The A had an average attack hit-miss ratio of X per fight.
-	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[one].name + " had an average attack <span style=\"color: #337ab7\">hit-miss ratio</span> of <span style=\"color: #337ab7\">" + oneRatio.toFixed(3) + "</span> per fight.</h4></div>");
-	// The B had an average attack hit-miss ratio of Y per fight.
-	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[two].name + " had an average attack <span style=\"color: #337ab7\">hit-miss ratio</span> of <span style=\"color: #337ab7\">" + twoRatio.toFixed(3) + "</span> per fight.</h4></div>");
+	// The A had an average attack hit ratio of X per fight.
+	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[one].name + " had an average attack <span style=\"color: #337ab7\">hit ratio</span> of <span style=\"color: #337ab7\">" + oneRatio.toFixed(3) + "</span> per fight.</h4></div>");
+	// The B had an average attack hit ratio of Y per fight.
+	$(".log").append("<div class=\"bubble \"><h4>The " + creatures[two].name + " had an average attack <span style=\"color: #337ab7\">hit ratio</span> of <span style=\"color: #337ab7\">" + twoRatio.toFixed(3) + "</span> per fight.</h4></div>");
 	// There was an average margin of defeat of X hit points.
 	$(".log").append("<div class=\"bubble \"><h4>There was an average <span style=\"color: #337ab7\">margin</span> of defeat of <span style=\"color: #337ab7\">" + (mDiff/cases).toFixed(3) + " hit points</span>.</h4></div>");
 
