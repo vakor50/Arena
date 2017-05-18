@@ -427,13 +427,13 @@ var creatures = [
 		"name":"Test Monk",
 		"armor_class":19,
 		"hit_points":58,
-		"strength":11,
+		"strength":16,
 		"dexterity":20,
 		"constitution":15,
 		"intelligence":13,
 		"wisdom":18,
 		"charisma":13,
-		"damage_resistances":["piercing", "slashing"],
+		"damage_resistances":[],
 		"damage_immunities":[],
 		"actions":{
 			"attack":[
